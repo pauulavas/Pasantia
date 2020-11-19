@@ -1,0 +1,17 @@
+<!--Reutilizamos codigo de index-->
+{% extends 'index.html' %} <!--#hereda de index-->
+{% block titulo %} Alquiler de Maquinaria {% endblock titulo %} <!--Paratitulodepagina-->
+{% block cuerpo %}
+
+ <!--Recibe informacion-->
+<form method="post">
+    {% csrf_token %}  <!--Django recibe la informacion-->
+    {{ form.as_p }}   <!--EstructuraDeModels, diccionario-->
+    
+    <button type="submit">Guardar</button>
+</form>
+
+
+
+
+{% endblock cuerpo %}

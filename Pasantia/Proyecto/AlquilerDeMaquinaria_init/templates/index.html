@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Listado {% endblock titulo %}</title>
+</head>
+<body>
+    {% block cuerpo %}
+    <h1>Alquiler de Maquinaria</h1>
+    <br>
+<!--CLIENTES-->    
+    <h2>Clientes</h2>
+    <table class="Cliente">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %} 
+            <tr>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.apellido }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>{{ cliente.direccion }}</td>
+               <td><a href="{% url 'Editar_Cliente'  cliente.uid %}">&nbsp;&nbsp;Editar&nbsp;</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'Eliminar_Cliente'  cliente.uid %}">&nbsp;Eliminar&nbsp;</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  
+<!--MAQUINARIA-->    
+
+    <br>
+    <h2>Maquinaria</h2>
+    <table class="Maquina">
+        <thead>
+            <tr>
+                <th>Maquina</th>
+                <th>Modelo</th>
+                <th>Fuente de Energia</th>
+                <th>Estado</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for maquina in maquinas %} 
+            <tr>
+                <td>{{ maquina.nombre_maquina }}</td>
+                <td>{{ maquina.modelo_maquina }}</td>
+                <td>{{ maquina.fuente_energia }}</td>
+                <td>{{ maquina.estado_maquina }}</td>
+               <td><a href="{% url 'Editar_Maquina'  maquina.uid_maquina %}">&nbsp;&nbsp;Editar&nbsp;</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'Eliminar_Maquina'  maquina.uid_maquina %}">&nbsp;Eliminar&nbsp;</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!--ALQUILER-->    
+
+<br>
+<h2>Maquinaria</h2>
+<table class="Alquiler">
+    <thead>
+        <tr>
+            <th>Maquina</th>
+            <th>Cliente</th>
+            <th>Monto de Alquiler</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for alquiler in alquileres %} 
+        <tr>
+            <td>{{ alquiler.maquina }}</td>
+            <td>{{ alquiler.cliente }}</td>
+            <td>{{ alquiler.monto_alquiler }}</td>
+           <td><a href="{% url 'Editar_Alquiler'  alquiler.uid_alquiler %}">&nbsp;&nbsp;Editar&nbsp;</a>&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'Eliminar_Alquiler'  alquiler.uid_alquiler %}">&nbsp;Eliminar&nbsp;</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    {% endblock cuerpo %}
+</body>
+</html>
