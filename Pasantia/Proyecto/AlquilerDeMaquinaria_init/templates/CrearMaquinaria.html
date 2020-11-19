@@ -1,0 +1,29 @@
+<!--Reutilizamos codigo de index-->
+{% extends 'index.html' %} <!--#hereda de index-->
+{% block titulo %} Alquiler de Maquinaria {% endblock titulo %} <!--Paratitulodepagina-->
+{% block cuerpo %}
+
+ <!--Recibe informacion-->
+<form method="post">
+    {% csrf_token %}  <!--Django recibe la informacion-->
+    {{ form.as_p }}   <!--EstructuraDeModels, diccionario-->
+    <!--
+    <label for="Nombre">Nombre</label>
+    <input type="text" name = 'nombre' id="nombre_maquina">
+
+    <label for="Modelo">Modelo</label>
+    <input type="text" name = 'modelo' id="modelo_maquina">
+
+    <label for="FuenteEnergia">Fuente de Energia</label>
+    <input type="text" name = 'fuenteenergia' id="fuente_energia">
+
+    <label for="Estado">Estado</label>
+    <input type="text" name = 'estado' id="estado_maquina">
+    -->
+    <button type="submit">Guardar</button>
+</form>
+
+
+
+
+{% endblock cuerpo %}
